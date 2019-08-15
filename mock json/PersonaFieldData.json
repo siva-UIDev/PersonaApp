@@ -1,0 +1,55 @@
+ $scope.personaFieldDetails= [{
+    "id": 4,
+    "title": "Text field SMALL 4",
+    "field_type": "short_text",
+    "data": "I am data",
+    "column_id": 2,
+    "prev_id": 0,
+    "next_id": 2
+  },
+
+  {
+    "id": 5,
+    "title": "Text field SMALL 5",
+    "field_type": "short_text",
+    "data": "second field",
+    "column_id": 1,
+    "prev_id": 1,
+    "next_id": 3
+  },
+  {
+    "id": 6,
+    "title": "Text field SMALL 6",
+    "field_type": "short_text",
+    "data": "third field",
+    "column_id": 2,
+    "prev_id": 2,
+    "next_id": null
+  },
+  {
+    "id": 12,
+    "title": "Text field WIDE 12",
+    "field_type": "short_text",
+    "data": "",
+    "column_id": 2,
+    "prev_id": 0,
+    "next_id": 2
+  },
+  {
+    "id": 13,
+    "title": "Text field WIDE 13",
+    "field_type": "short_text",
+    "data": "",
+    "column_id": 2,
+    "prev_id": 1,
+    "next_id": 3
+  },
+  {
+    "id": 14,
+    "title": "Text field WIDE 14",
+    "field_type": "short_text",
+    "data": "",
+    "column_id": 2,
+    "prev_id": 2,
+    "next_id": null
+  }];

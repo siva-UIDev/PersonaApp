@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Persona</title>
+      <link rel="stylesheet" href="./css/bootstrap.min.css"  />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="./css/jquery-ui.css">
+      <link rel="stylesheet" href="./css/style.css" />
+       
+       
+      <script src="./js/lib/jquery-1.9.1.min.js"></script>
+      <script src="./js/lib/jquery-ui.min.js"></script>
+      <script src="./js/lib/angular.min.js"></script>  
+      <script src="./js/lib/sortable.js"></script>
+       
+       
+      <script src="./js/app/app.js"></script>
+      <script src="./js/app/controller.js"></script>
+      <script src="./js/app/service.js"></script>  
+   </head>
+   <body>
+      <div ng-app="personaApp" ng-controller="personaCtrl" class="container-fluid persona-app">
+         <div class="row">
+            <nav class="navbar navbar-default navbar-fixed-top">
+               <div class="container-fluid">
+                  <div class="navbar-header padding-all">
+                     <div class="pull-left">
+                        <i class="fa fa-user"></i>
+                        <span class="persona-hdr padding-left">Persona <input type="text" ng-model="name" ng-blur="savePersonaName($event)"> <i class="fa fa-edit padding-left"></i> </span> 
+                     </div>
+                  </div>
+                  <ul class="nav navbar-nav pull-right">
+                     <li><a href="#">Save Persona</a></li>
+                     <li><a href="#">Add Element</a></li>
+                     <li><a href="#">Export</a></li>
+                     <li><a href="#">Duplicate</a></li>
+                     <li><a href="#">Move</a></li>
+                  </ul>
+               </div>
+            </nav>
+         </div>
+         <div class="container-fluid">
+            <div class="row persona-cntr">
+               <div class="col-md-8">
+                  <div class="main-col-left">
+                     <div class="row container-fluid padding-bottom">
+                        <div class="col-md-2">
+                           <div class="avatar" style=background-color:{{color}}>
+                              <i class="fa fa-user" ></i>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="panel panel-persona">
+                              <div class="panel-heading panel-persona-hdr">PERSONA NAME</div>
+                              <div class="panel-body panel-persona-cntr">
+                                 <input type="text" name="name" placeholder="name" ng-model="name"
+                                    ng-minlength='{{persona.name.minlength}}' ng-maxlength="{{persona.name.maxlength}}" ng-required='persona.name.required' ng-blur="savePersonaName($event)"/>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="panel panel-persona">
+                              <div class="panel-heading panel-persona-hdr">SHORT NAME</div>
+                              <div class="panel-body panel-persona-cntr">
+                                 <input id="initial" type="text" name="initial" placeholder="initial" ng-model="initials"
+                                     ng-maxlength="{{persona.initial.maxlength}}" ng-required='persona.initial.required' maxLength= "3" ng-blur="savePersonaName($event)"/>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="main-col-left-bg container-fluid">
+                        <div class={{columnDetail.width}}  ng-repeat="columnDetail in personaColumnDetails">
+                            
+                             <div class="row  container-fluid" ng-if="columnDetail.id == 2" ng-repeat="wideDetail in fieldWideData">
+                                 <div  class="persona-fields" id={{wideDetail.id}}>
+                                    <h5 class="persona-field-title">
+                                       <b>{{wideDetail.title}}</b>
+                                       <span class="fa fa-gear pull-right cursor-pointer" ng-class={{setting}}  ng-click="changeSetting($event)"></span>
+                                    </h5>
+                                    <h6 class="persona-field-data">{{wideDetail.data}}</h6>
+                                 </div>
+                              </div>
+                            
+                           <div class="row container-fluid padding-top" ng-if="columnDetail.id == 1">
+                              <div ui-sortable="sortableOptions" class="dropzone screen connected-drop-target-sortable floatleft unsortable" ng-model="selectedComponents">
+                                 <div class="text-center"><i>Insert elment here</i></div>
+                                 <div ng-repeat="component in selectedComponents track by $index">
+                                    <div  class="persona-fields"  id={{4+$index}} >
+                                       <h5 class="persona-field-title">
+                                          <span>{{component.title}}</span>
+                                          <span class="fa fa-gear pull-right cursor-pointer" ng-class={{setting}}  ng-click="changeSetting($event)" ></span>
+                                       </h5>
+                                       <h6 class="persona-field-data">{{component.field_type}}</h6>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="cntr" >
+                              <div class="row container-fluid" ng-if="columnDetail.id == fieldDetail.column_id" ng-repeat="fieldDetail in personaFieldDetails | orderBy:'prev_id'">
+                                 <div  class="persona-fields"  id={{fieldDetail.id}} >
+                                    <h5 class="persona-field-title">
+                                       <b>{{fieldDetail.title}}</b>
+                                       <span class="fa fa-gear pull-right cursor-pointer" ng-class={{setting}}  ng-click="changeSetting($event)" ></span>
+                                    </h5>
+                                    <h6 class="persona-field-data">{{fieldDetail.data}}</h6>
+                                    <span class="hide">{{fieldDetail.column_id}}</span>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class=" main-col-right">
+                     <div class="panel panel-default new-elem-cntr">
+                        <div class="panel-heading">
+                           <h3 class="panel-title">
+                              <span>ADD ELEMENT</span>
+                              <i class="fa fa-close pull-right"></i>  
+                           </h3>
+                        </div>
+                        <div class="panel-body">
+                           <h4 id="new-element-title">Add element to Persona</h4>
+                           <div class="alert alert-info new-ele-info-cntr" role="alert">
+                              Click or drag & drop one of the element types below to add it to the persona.
+                              Click on the <i class="fa fa-gear"></i> icon of each element to edit its settings.
+                              You can reorder the elements by dragging them.
+                           </div>
+                           <div  class="persona-fields new-persona-fields-cntr" >
+                              <div  id="container1" class="panel-body box-container">
+                                 <div class="nav nav-list small">
+                                    <div ui-sortable="draggableOptions" class="screen clearfix draggable-element-container"
+                                       ng-repeat="draggableArray in draggables track by $index"
+                                       ng-model="draggableArray">
+                                       <div ng-repeat="draggable in draggableArray "  id={{draggable.id}}  class="new-persona-fields">
+                                          <h6 class="new-persona-field-data">{{draggable.field_type}}</h6>
+                                          <h5 class="new-persona-field-title">{{draggable.title}}</h5>
+                                          <span>{{$index + 1}}</span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

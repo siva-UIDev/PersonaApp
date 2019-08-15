@@ -1,0 +1,232 @@
+@font-face {
+  font-family: 'Source Sans Pro';    
+  src: url('../fonts/SourceSansPro-Bold.ttf') format('truetype');
+  src: url('../fonts/SourceSansPro-RegularItalic.ttf') format('truetype');
+  src: url('../fonts/SourceSansPro-Regular.ttf') format('truetype');
+}
+body { 
+    padding-top: 50px; 
+    font-family: 'Source Sans Pro', sans-serif !important
+}
+
+.padding-all{
+    padding: 15px;
+}
+.padding-left{
+    padding-left: 10px;
+}
+.padding-right{
+    padding-right: 10px;
+}
+.padding-top{
+    padding-top: 10px;
+}
+.padding-bottom{
+    padding-bottom: 10px;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+.main-col-left-bg {
+    background-color: #F0F0F0;!important;
+}
+#initial{
+    text-transform: uppercase;
+}
+.persona-cntr {
+    background: #646E6E;
+}
+.persona-app{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.main-col-left {
+    margin: 0 auto;
+    width: 100%;
+    float: none;
+    position: relative;
+    background: #DCDCDC;
+    padding: 10px 0;
+    margin-top:40px;
+}
+.avatar {
+    /*background: #e06969;*/
+    min-height: 72px;
+    border-radius: 4px;
+}
+.avatar .fa-user {
+    font-size: 40px;
+    display: block;
+    text-align: center;
+    line-height: 72px;
+}
+.panel-persona {
+    margin-bottom: 0;
+    border-radius: 2px;
+}
+.panel-persona-hdr {
+    padding: 10px 0px 0 15px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #a5a4a4;
+}
+.panel-body.panel-persona-cntr {
+    padding: 5px 0 10px 10px;
+}
+.panel-persona-cntr input {
+    border-width: 0;
+    width: 100%;
+    font-size: 16px;
+    padding: 3px 5px;
+}
+.new-elem-cntr{
+    position: fixed;
+    width: 30%;
+    height: calc(100vh - 20px);
+    margin-top: 20px;
+    right: 0px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    right: 0px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    /*box-shadow: inset 0 1px 20px 0 rgba(0,0,0,0.3), 0 0 30px 0 rgba(0,0,0,0.3);*/
+}
+.new-elem-cntr .panel-heading {
+    background-color: #DCDCDC;
+}
+.new-ele-info-cntr{
+    position: relative;
+    left: -15px;
+    width: calc(100% + 30px);
+    border-radius: 0;
+    color: #525050;
+    font-style: italic;
+    border-width: 0;
+}
+.fa-user{
+    font-size: 24px;
+}
+.thin{
+    width: 30%;
+    float: left;
+    padding: 20px 10px 10px 0;
+}
+.wide{
+    width: 70%;
+    float: left;
+    padding-left: 20px;
+    padding: 20px 0px 10px 0;
+}
+.persona-fields{
+    width:100%;
+    float:left;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #EFEFEF;
+    margin-top: 10px;
+    background: #fff;
+    border-radius: 3px;    
+    text-align: left;
+}
+.persona-field-title {
+    color: #B1B6B6;
+    font-weight: bold;
+    font-size: 13px;
+}
+.persona-field-data {
+    color: #404040;
+    font-weight: normal;
+    font-size: 15px;
+}
+.ui-state-highlight { height: 82px; width:222px;}
+.ui-draggable, .ui-droppable {
+	background-position: top;
+}
+
+/*
+* Drag comp CSS
+*/
+
+.thumbnail{
+    height:50px;
+}
+
+
+/* Styles go here */
+
+.dropzone {
+    position: relative;
+    border: 2px dashed #aee4ef;
+    border-radius: 5px;
+    color: #646E6E;
+    text-align: center;
+    background-color: #d0e7f3;
+    margin-bottom: 20px;
+}
+
+.dropzone:after {
+  content: 'drop zone';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: none;
+}
+
+.noFields {
+  padding: 14px;
+  border: 2px dashed grey;
+}
+
+
+
+.new-persona-fields-cntr {
+    padding: 0;
+    border: 0;
+}
+.new-persona-fields-cntr .draggable-element-container {
+  border: 1px dashed grey;
+  padding: 14px;
+}
+.draggable-element-container .new-persona-field-data {
+    font-size: 25px;
+    font-weight: normal;
+}
+.draggable-element-container .new-persona-field-title {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+.ng-invalid.ng-invalid-required {
+     border: 1px solid red !important;
+}
+input:focus {
+    outline: none;
+}
+.persona-hdr{
+    font-size: 20px;
+}
+.persona-hdr input{
+    font-weight: bold;
+    border: none;
+    background: transparent;
+    padding-left: 5px;
+    font-size: 20px;
+    max-width: 65px;
+    display: inline;
+}
+#new-element-title{
+    color: #3C4646;	
+    font-family: "Source Sans Pro";	
+    font-size: 24px;
+}
+.new-persona-fields {
+    cursor: move;
+}
+
+
+
+
