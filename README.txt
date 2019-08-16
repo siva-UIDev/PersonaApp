@@ -23,5 +23,5 @@ Open the index.html file in browser.
 4. Once the dragging is complete,the new informations are printed in the console.
 5. User can delete the field by using settings option on each field and the updated field informations are printed in the console.
 6. User can modify field information and data will be saved on blur.
-7. MockJson is attached and it can be used the dynamic view for thin & wide columns.
+7. MockJson is attached and it can be used to view dynamic data pattern for thin & wide columns.
 
