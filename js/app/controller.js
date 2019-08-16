@@ -143,7 +143,7 @@ angular.module('personaApp', ['ui.sortable'])
     /* Method:settings  enables to delete the persona field*/
 
         $scope.changeSetting = function(event) {
-            if ($scope.setting == "fa-trash") {
+            if ($scope.setting == "fa-trash" && angular.element(event.target).hasClass("fa-trash") ) {
                 $scope.setting = "fa-gear";
                 angular.element(event.target).addClass("fa-trash").removeClass("fa-gear");
                 var deletedElementID = angular.element(event.target).closest(".persona-fields").attr("id");
