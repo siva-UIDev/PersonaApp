@@ -22,5 +22,6 @@ Open the index.html file in browser.
 3. User can drag a "short text" field from the right side panel to the left most column.
 4. Once the dragging is complete,the new informations are printed in the console.
 5. User can delete the field by using settings option on each field and the updated field informations are printed in the console.
-6. MockJson is attached and it can be used the dynamic view for thin & wide columns.
+6. User can modify field information and data will be saved on blur.
+7. MockJson is attached and it can be used the dynamic view for thin & wide columns.
 

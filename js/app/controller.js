@@ -34,8 +34,8 @@ angular.module('personaApp', ['ui.sortable'])
         function draggableComponents() {
             
               var originalDraggables = [{
-                        "id": $scope.personaFieldInitialValues + 1,
-                        "title": "Text field-1",
+                        "id": $scope.personaFieldInitialValues,
+                        "title": "Text field",
                         "field_type": "short_text",
                         "data": "I am data"
                     }];
@@ -64,7 +64,7 @@ angular.module('personaApp', ['ui.sortable'])
                                 droppedItem = JSON.parse(droppedItem);
                                 $scope.personaFieldDetails.push(droppedItem);
 
-
+                                //Data format is exposed as nested array in the library
                                 $scope.draggables[0][0].id = $scope.draggables[0][0].id + 1
                                 console.log("New draggable element Data id Increment" + angular.toJson($scope.draggables));
 
@@ -131,7 +131,7 @@ angular.module('personaApp', ['ui.sortable'])
             dataService.getpersonFieldDetails()
                 .then(function(response) {
                     $scope.personaFieldDetails = response.data;
-                    $scope.personaFieldInitialValues = response.data.length;
+                    $scope.personaFieldInitialValues = response.data.length +1;
                     draggableComponents();
                             
 
@@ -165,6 +165,23 @@ angular.module('personaApp', ['ui.sortable'])
 
         $scope.savePersonaName = function($event) {
             console.log("Persona Name : " + $scope.name + " and Initial : " + $scope.initials);
+        };
+        
+     /* Method:savefieldData saves the persona field data on blur*/
+
+        $scope.savefieldData = function($event) {       
+            var modifiedFieldID = angular.element(event.target).closest(".persona-fields").attr("id");
+            var modifiedFieldValue=angular.element(event.target).val();
+            console.log("modifiedFieldID : " + modifiedFieldID + " and modifiedFieldValue : " + modifiedFieldValue);
+            
+             for (var i=0; i < $scope.personaFieldDetails.length; i++)
+                 {
+              if ($scope.personaFieldDetails[i].id == modifiedFieldID)
+                  $scope.personaFieldDetails[i].data=modifiedFieldValue;
+
+                 }
+            console.log("Update of field data on blur" + angular.toJson($scope.personaFieldDetails));
+            
         };
 
     }]);
